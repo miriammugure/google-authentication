@@ -1,5 +1,5 @@
 import React from 'react'
-
+import '../Login/signIn.css'
 function Home() {
   const logout =()=>{
     localStorage.clear();
@@ -7,8 +7,11 @@ function Home() {
   }
   return (
     <div>
-      
-     <button onClick={logout}>log out</button>
+   
+     
+        <button onClick={logout} className='btnf'>log out</button>
+     
+     
     </div>
   )
 }

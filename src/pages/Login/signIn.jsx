@@ -14,10 +14,6 @@ function Signin() {
             localStorage.setItem("email",data.user.email)
         })
     }
-
-  //   const appid=;
-  // const secret=;
- // https://signin-auth-5df15.firebaseapp.com/__/auth/handler
     useEffect(()=>{
         setValue(localStorage.getItem('email'))
     })
