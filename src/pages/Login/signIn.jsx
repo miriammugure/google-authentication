@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {auth,provider} from'./config.js'
+import { authf,providerf } from './configFacebook.js';
 import { signInWithPopup } from 'firebase/auth';
 import Home from '../Home/Home.jsx';
 import './signIn.css'
 function Signin() {
     const[value,setValue]=useState("");
-    const handleClick =()=>{
+    const handleGoogleClick =()=>{
+      
         signInWithPopup (auth,provider).then((data)=>{
           console.log(data.user.email,data.user.displayName,data.user.photoURL)
             setValue(data.user.email)
@@ -13,11 +15,20 @@ function Signin() {
         })
     }
 
-  //   const appid=873227501313807;
-  // const secret=09cc687a60a5fa2401705231e9311c8b;
+  //   const appid=;
+  // const secret=;
+ // https://signin-auth-5df15.firebaseapp.com/__/auth/handler
     useEffect(()=>{
         setValue(localStorage.getItem('email'))
     })
+
+    const handleFacebookClick=()=>{
+   signInWithPopup(authf,providerf).then((data)=>{
+    console.log(data.user.email)
+    setValue(data.user.email)
+    localStorage.setItem("email",data.user.email)
+   })
+    }
   return (
     <>
     { value ? <Home/> :  
@@ -34,8 +45,8 @@ function Signin() {
         <button type="submit">Sign In</button>
     </form>
     <div className="continue">
-    <button onClick={handleClick} className='btnf'>Continue with google</button> 
-    <button onClick={handleClick} className='btnf'>Continue with facebook</button> 
+    <button onClick={handleGoogleClick} className='btnf'>Continue with google</button> 
+    <button onClick={handleFacebookClick} className='btnf'>Continue with facebook</button> 
     </div>
    
 </div>
