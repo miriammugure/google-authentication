@@ -20,7 +20,7 @@ function Signin() {
 
     const handleFacebookClick=()=>{
    signInWithPopup(authf,providerf).then((data)=>{
-    console.log(data.user.email)
+    console.log(data.user.email,data.user.displayName,data.user.photoURL)
     setValue(data.user.email)
     localStorage.setItem("email",data.user.email)
    })
